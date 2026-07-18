@@ -29,6 +29,7 @@ export default function SignIn() {
 
   async function onSignInPress() {
     console.log("Sign In Pressed");
+    // POST call
     const { error } = await signIn.password({
       emailAddress: email,
       password: password,
