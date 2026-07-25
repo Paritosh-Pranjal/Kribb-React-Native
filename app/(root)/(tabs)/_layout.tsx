@@ -1,7 +1,10 @@
+import { useUserStore } from "@/store/userStore";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Tabs } from "expo-router";
 
 export default function TabLayout() {
+  const isAdmin = useUserStore((state) => state.isAdmin);
+
   return (
     <Tabs screenOptions={{ headerShown: false }}>
       <Tabs.Screen
@@ -22,6 +25,20 @@ export default function TabLayout() {
           ),
         }}
       />
+
+      {/* Create Property for Admin only */}
+      {isAdmin && (
+        <Tabs.Screen
+          name="create"
+          options={{
+            title: "Add Property",
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="add-circle-outline" size={size} color={color} />
+            ),
+          }}
+        />
+      )}
+
       <Tabs.Screen
         name="saved"
         options={{
