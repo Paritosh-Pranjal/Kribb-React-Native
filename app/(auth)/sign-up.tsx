@@ -36,7 +36,6 @@ export default function SignUp() {
   }
 
   async function onSignUpPress() {
-    console.log("Sign Up Pressed");
     const { error } = await signUp.password({
       emailAddress: email,
       password: password,

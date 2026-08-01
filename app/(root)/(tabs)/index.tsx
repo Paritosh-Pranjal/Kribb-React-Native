@@ -54,8 +54,6 @@ export default function HomeScreen() {
     }, []),
   );
 
-  console.log(featured, recommended);
-
   return (
     <SafeAreaView>
       <FlatList
