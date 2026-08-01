@@ -1,10 +1,26 @@
-import { View, Text } from "react-native";
 import React from "react";
+import { useRouter } from "expo-router";
+import { useSupabase } from "@/hooks/useSupabase";
+import PropertyForm, { PropertyFormValues } from "@/components/PropertyForm";
 
-export default function create() {
+export default function Create() {
+  const router = useRouter();
+  const authSupabase = useSupabase();
+
+  const handleSubmit = async (values: PropertyFormValues) => {
+    return authSupabase.from("properties").insert({
+      ...values,
+      is_sold: false,
+    });
+  };
+
   return (
-    <View>
-      <Text>create</Text>
-    </View>
+    <PropertyForm
+      headerTitle="Add Property"
+      submitLabel="List Property"
+      successMessage="Property listed successfully."
+      onSubmit={handleSubmit}
+      onSuccess={() => router.replace("/(root)/(tabs)")}
+    />
   );
 }
