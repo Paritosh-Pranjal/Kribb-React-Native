@@ -80,7 +80,7 @@ export default function PropertyCard({
         <Ionicons
           name={isSaved ? "heart" : "heart-outline"}
           size={18}
-          color={isSaved ? "#  EF4444" : "#9CA3AF"}
+          color={isSaved ? "#EF4444" : "#9CA3AF"}
         />
       </TouchableOpacity>
     </TouchableOpacity>

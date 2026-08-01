@@ -28,7 +28,6 @@ export default function SignIn() {
   const isLoading = fetchStatus === "fetching";
 
   async function onSignInPress() {
-    console.log("Sign In Pressed");
     // POST call
     const { error } = await signIn.password({
       emailAddress: email,
@@ -44,7 +43,6 @@ export default function SignIn() {
       await signIn.finalize({
         navigate: ({ session, decorateUrl }) => {
           if (session?.currentTask) {
-            console.log("Current Task: ", session.currentTask);
             return;
           }
           const url = decorateUrl("/");
@@ -74,7 +72,6 @@ export default function SignIn() {
       await signIn.finalize({
         navigate: ({ session, decorateUrl }) => {
           if (session?.currentTask) {
-            console.log("Current Task: ", session.currentTask);
             return;
           }
           const url = decorateUrl("/");

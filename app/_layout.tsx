@@ -1,5 +1,6 @@
 import { ClerkProvider } from "@clerk/expo";
 import { tokenCache } from "@clerk/expo/token-cache";
+import Toast from "@/components/Toast";
 import { Slot } from "expo-router";
 import "../global.css";
 
@@ -14,6 +15,7 @@ export default function RootLayout() {
   return (
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
       <Slot />
+      <Toast />
     </ClerkProvider>
   );
 }
