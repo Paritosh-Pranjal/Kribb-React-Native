@@ -28,6 +28,9 @@
     },
     "plugins": [
       "expo-router",
+      ["expo-location",
+       {"locationWhenInUserPermission":
+        "Allow Kribb to access your location to tag property coordinates."}],
       [
         "expo-splash-screen",
         {
