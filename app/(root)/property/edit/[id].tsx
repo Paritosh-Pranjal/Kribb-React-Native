@@ -49,16 +49,16 @@ export default function EditProperty() {
 
   if (!property) {
     return (
-      <SafeAreaView className="flex-1 items-center justify-center bg-white gap-4">
+      <SafeAreaView className="flex-1 items-center justify-center gap-4 bg-white">
         <Text className="text-gray-500">
           Property not found. Try again later.
         </Text>
         <TouchableOpacity
           onPress={() => router.back()}
-          className="flex-row items-center gap-2 bg-gray-100 px-4 py-2 rounded-full"
+          className="flex-row items-center gap-2 rounded-full bg-gray-100 px-4 py-2"
         >
           <Ionicons name="arrow-back" size={16} color="#111827" />
-          <Text className="text-gray-900 font-semibold">Go Back</Text>
+          <Text className="font-semibold text-gray-900">Go Back</Text>
         </TouchableOpacity>
       </SafeAreaView>
     );

@@ -65,10 +65,10 @@ export default function Saved() {
   return (
     <SafeAreaView className="flex-1 bg-gray-50">
       {/* Header */}
-      <View className="px-5 pt-4 pb-3">
-        <Text className="text-2xl font-bold text-gray-900">Saved</Text>
+      <View className="px-5 pb-3 pt-4">
+        <Text className="font-bold text-2xl text-gray-900">Saved</Text>
         {!loading && (
-          <Text className="text-sm text-gray-400 mt-1">
+          <Text className="mt-1 text-sm text-gray-400">
             {saved.length} {saved.length === 1 ? "property" : "properties"}{" "}
             saved
           </Text>
@@ -96,20 +96,20 @@ export default function Saved() {
           )}
           ListEmptyComponent={
             <View className="flex-1 items-center justify-center py-24">
-              <View className="w-20 h-20 bg-red-50 rounded-full items-center justify-center mb-4">
+              <View className="mb-4 h-20 w-20 items-center justify-center rounded-full bg-red-50">
                 <Ionicons name="heart-outline" size={36} color="#EF4444" />
               </View>
-              <Text className="text-gray-700 text-lg font-bold mb-1">
+              <Text className="mb-1 font-bold text-lg text-gray-700">
                 No saved properties
               </Text>
-              <Text className="text-gray-400 text-sm text-center px-8">
+              <Text className="px-8 text-center text-sm text-gray-400">
                 Tap the heart icon on any property to save it here
               </Text>
               <TouchableOpacity
                 onPress={() => router.push("/(root)/(tabs)/search")}
-                className="mt-6 bg-blue-600 px-6 py-3 rounded-2xl"
+                className="mt-6 rounded-2xl bg-blue-600 px-6 py-3"
               >
-                <Text className="text-white font-semibold">
+                <Text className="font-semibold text-white">
                   Browse Properties
                 </Text>
               </TouchableOpacity>

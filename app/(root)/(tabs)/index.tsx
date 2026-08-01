@@ -64,7 +64,7 @@ export default function HomeScreen() {
         ListHeaderComponent={
           <View>
             {/* Header  */}
-            <View className="flex-row items-center justify-between px-5 pt-4 pb-5">
+            <View className="flex-row items-center justify-between px-5 pb-5 pt-4">
               <Image
                 source={require("../../../assets/images/kribb.png")}
                 style={{ width: 90, height: 36 }}
@@ -73,7 +73,7 @@ export default function HomeScreen() {
 
               <View className="items-end">
                 <Text>Good Morning 👋</Text>
-                <Text className="text-gray-900 text-base font-bold">
+                <Text className="font-bold text-base text-gray-900">
                   {user?.firstName ?? "User"}
                 </Text>
               </View>
@@ -82,7 +82,7 @@ export default function HomeScreen() {
             {/* Search Bar  */}
             <TouchableOpacity
               onPress={() => router.push("/(root)/(tabs)/search")}
-              className="mx-5 mb-6 flex-row items-center bg-white rounded-2xl px-4 py-3 gap-3"
+              className="mx-5 mb-6 flex-row items-center gap-3 rounded-2xl bg-white px-4 py-3"
               style={{
                 shadowColor: "#000",
                 shadowOffset: { width: 0, height: 1 },
@@ -92,14 +92,14 @@ export default function HomeScreen() {
               }}
             >
               <Ionicons name="search-outline" size={18} color="#9CA3AF" />
-              <Text className="text-gray-400 text-sm flex-1">
+              <Text className="flex-1 text-sm text-gray-400">
                 Search properties, cities...
               </Text>
               <TouchableOpacity
                 onPress={() =>
                   router.push("/(root)/(tabs)/search?openFilters=true")
                 }
-                className="w-8 h-8 bg-blue-600 rounded-xl items-center justify-center "
+                className="h-8 w-8 items-center justify-center rounded-xl bg-blue-600"
               >
                 <Ionicons name="options-outline" size={15} color="white" />
               </TouchableOpacity>
@@ -107,7 +107,7 @@ export default function HomeScreen() {
 
             {/* Featured Header  */}
             <View className="mb-6">
-              <Text className="text-gray-900 text-lg font-bold px-5 mb-4">
+              <Text className="mb-4 px-5 font-bold text-lg text-gray-900">
                 Featured
               </Text>
               {isLoading ? (
@@ -129,7 +129,7 @@ export default function HomeScreen() {
             </View>
 
             {/* Recommended Header  */}
-            <Text className="text-gray-900 text-lg font-bold px-5 mb-4">
+            <Text className="mb-4 px-5 font-bold text-lg text-gray-900">
               Recommended
             </Text>
           </View>

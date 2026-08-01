@@ -77,7 +77,7 @@ export default function ProfileScreen() {
 
   if (!isLoaded || !user) {
     return (
-      <SafeAreaView className="flex-1 bg-white items-center justify-center">
+      <SafeAreaView className="flex-1 items-center justify-center bg-white">
         <ActivityIndicator size="large" color="#3B82F6" />
       </SafeAreaView>
     );
@@ -90,12 +90,12 @@ export default function ProfileScreen() {
         <View className="relative">
           <Image
             source={{ uri: user.imageUrl }}
-            className="w-24 h-24 rounded-full mb-4"
+            className="mb-4 h-24 w-24 rounded-full"
           />
           <TouchableOpacity
             onPress={handleUpdateProfileImage}
             disabled={isUpdating}
-            className="absolute bottom-3 right-0 bg-blue-600 rounded-full p-2"
+            className="absolute bottom-3 right-0 rounded-full bg-blue-600 p-2"
           >
             {isUpdating ? (
               <ActivityIndicator size="small" color="white" />
@@ -104,16 +104,16 @@ export default function ProfileScreen() {
             )}
           </TouchableOpacity>
         </View>
-        <Text className="text-xl font-bold text-gray-800">
+        <Text className="font-bold text-xl text-gray-800">
           {user.firstName} {user.lastName}
         </Text>
-        <Text className="text-gray-500 mt-1">
+        <Text className="mt-1 text-gray-500">
           {user.emailAddresses[0].emailAddress}
         </Text>
       </View>
 
       {/* Menu Items */}
-      <View className="px-6 gap-2">
+      <View className="gap-2 px-6">
         <MenuItem
           icon="heart-outline"
           label="Saved Properties"
@@ -158,13 +158,13 @@ export default function ProfileScreen() {
       </View>
 
       {/* Sign Out */}
-      <View className="px-6 mt-auto mb-8">
+      <View className="mb-8 mt-auto px-6">
         <TouchableOpacity
           onPress={handleSignOut}
-          className="flex-row items-center justify-center gap-2 bg-red-50 py-4 rounded-2xl border border-red-100"
+          className="flex-row items-center justify-center gap-2 rounded-2xl border border-red-100 bg-red-50 py-4"
         >
           <Ionicons name="log-out-outline" size={20} color="#EF4444" />
-          <Text className="text-red-500 font-semibold text-base">Sign Out</Text>
+          <Text className="text-base font-semibold text-red-500">Sign Out</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -183,10 +183,10 @@ function MenuItem({
   return (
     <TouchableOpacity
       onPress={onPress}
-      className="flex-row items-center gap-4 bg-gray-50 px-4 py-4 rounded-2xl"
+      className="flex-row items-center gap-4 rounded-2xl bg-gray-50 px-4 py-4"
     >
       <Ionicons name={icon} size={22} color="#6B7280" />
-      <Text className="flex-1 text-gray-700 font-medium text-base">
+      <Text className="flex-1 font-medium text-base text-gray-700">
         {label}
       </Text>
       <Ionicons name="chevron-forward" size={18} color="#D1D5DB" />

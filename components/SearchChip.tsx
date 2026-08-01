@@ -10,9 +10,9 @@ interface SearchChipProps {
 
 export default function SearchChip({ type, icon, onClick }: SearchChipProps) {
   return (
-    <View className="flex-row items-center gap-1 px-3 py-1 bg-blue-200 rounded-full">
+    <View className="flex-row items-center gap-1 rounded-full bg-blue-200 px-3 py-1">
       {icon && <Ionicons name={icon} size={12} color="#1D4ED8" />}
-      <Text className="text-blue-700 text-xs font-semibold capitalize">
+      <Text className="text-xs font-semibold capitalize text-blue-700">
         {type}
       </Text>
       <TouchableOpacity onPress={onClick}>
