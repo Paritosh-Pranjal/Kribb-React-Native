@@ -24,15 +24,15 @@ export default function Toast() {
   return (
     <SafeAreaView
       pointerEvents="none"
-      className="absolute top-0 left-0 right-0 items-center px-5"
+      className="absolute left-0 right-0 top-0 items-center px-5"
     >
       <Animated.View
         key={toast.id}
         entering={FadeInDown}
         exiting={FadeOutUp}
-        className={`mt-2 px-4 py-3 rounded-xl w-full ${COLORS[toast.type]}`}
+        className={`mt-2 w-full rounded-xl px-4 py-3 ${COLORS[toast.type]}`}
       >
-        <Text className="text-white text-sm font-medium text-center">
+        <Text className="text-center font-medium text-sm text-white">
           {toast.message}
         </Text>
       </Animated.View>

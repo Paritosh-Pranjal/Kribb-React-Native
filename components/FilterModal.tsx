@@ -123,17 +123,14 @@ export default function FilterModal({
       onRequestClose={onClose}
     >
       <View className="flex-1 bg-gray-50">
-        <View
-          className="flex-row items-center justify-between px-5 pt-6 
-          bg-4 bg-white border-b border-gray-100"
-        >
+        <View className="bg-4 flex-row items-center justify-between border-b border-gray-100 bg-white px-5 pt-6">
           <TouchableOpacity onPress={onClose} className="p-1">
             <Ionicons name="close" size={22} color="#374151" />
           </TouchableOpacity>
 
-          <Text className="text-lg font-bold text-gray-900">Filters</Text>
+          <Text className="font-bold text-lg text-gray-900">Filters</Text>
           <TouchableOpacity onPress={handleReset}>
-            <Text className="text-blue-600 font-semibold text-sm">Reset</Text>
+            <Text className="text-sm font-semibold text-blue-600">Reset</Text>
           </TouchableOpacity>
         </View>
 
@@ -142,10 +139,10 @@ export default function FilterModal({
           contentContainerStyle={{ padding: 20, paddingBottom: 40 }}
           showsVerticalScrollIndicator={false}
         >
-          <Text className="text-base font-bold text-gray-800 mb-3">
+          <Text className="mb-3 font-bold text-base text-gray-800">
             Property Type
           </Text>
-          <View className="flex-row gap-2 flex-wrap mb-6">
+          <View className="mb-6 flex-row flex-wrap gap-2">
             {TYPES.map((item) => (
               <TouchableOpacity
                 key={item.label}
@@ -160,21 +157,21 @@ export default function FilterModal({
             ))}
           </View>
 
-          <Text className="text-base font-bold text-gray-800 mb-3">
+          <Text className="mb-3 font-bold text-base text-gray-800">
             Bedrooms
           </Text>
-          <View className="flex-row gap-2 flex-wrap mb-6">
+          <View className="mb-6 flex-row flex-wrap gap-2">
             {BEDS.map((item) => (
               <TouchableOpacity
                 key={item.label}
                 onPress={() =>
                   setDraft((d) => ({ ...d, bedrooms: item.value }))
                 }
-                className={`flex-1 items-center py-3 rounded-2xl border ${chip(draft.bedrooms === item.value)}`}
+                className={`flex-1 items-center rounded-2xl border py-3 ${chip(draft.bedrooms === item.value)}`}
                 style={shadow}
               >
                 <Text
-                  className={`text-sm font-bold ${chipText(draft.bedrooms === item.value)}`}
+                  className={`font-bold text-sm ${chipText(draft.bedrooms === item.value)}`}
                 >
                   {item.label}
                 </Text>
@@ -182,10 +179,10 @@ export default function FilterModal({
             ))}
           </View>
 
-          <Text className="text-base font-bold text-gray-800 mb-3">
+          <Text className="mb-3 font-bold text-base text-gray-800">
             Price Range (₹)
           </Text>
-          <View className="flex-row gap-3 mb-3">
+          <View className="mb-3 flex-row gap-3">
             {[
               {
                 label: "Min Price",
@@ -203,14 +200,14 @@ export default function FilterModal({
               },
             ].map(({ label, value, onChange, placeholder }) => (
               <View key={label} className="flex-1">
-                <Text className="text-xs text-gray-500 mb-1.5 font-medium">
+                <Text className="mb-1.5 font-medium text-xs text-gray-500">
                   {label}
                 </Text>
                 <View
-                  className="flex-row items-center bg-white rounded-2xl px-3 border border-gray-200"
+                  className="flex-row items-center rounded-2xl border border-gray-200 bg-white px-3"
                   style={shadow}
                 >
-                  <Text className="text-gray-400  text-sm mr-1">₹</Text>
+                  <Text className="mr-1 text-sm text-gray-400">₹</Text>
                   <TextInput
                     className="flex-1 py-3 text-gray-800"
                     placeholder={placeholder}
@@ -224,7 +221,7 @@ export default function FilterModal({
             ))}
           </View>
 
-          <View className="flex-row gap-2 flex-wrap mb-6">
+          <View className="mb-6 flex-row flex-wrap gap-2">
             {PRICE_PRESETS.map((item) => {
               const active =
                 draftMinPrice === item.min && draftMaxPrice === item.max;
@@ -238,14 +235,14 @@ export default function FilterModal({
                       maxPrice: item.max ? String(item.max) : "",
                     }))
                   }
-                  className={`px-3 py-1.5 rounded-full border ${
+                  className={`rounded-full border px-3 py-1.5 ${
                     active
                       ? "border-blue-300 bg-blue-50"
                       : "border-gray-200 bg-white"
                   }`}
                 >
                   <Text
-                    className={`text-sm font-medium ${active ? "text-blue-600" : "text-gray-500"}`}
+                    className={`font-medium text-sm ${active ? "text-blue-600" : "text-gray-500"}`}
                   >
                     {item.label}
                   </Text>
@@ -255,10 +252,10 @@ export default function FilterModal({
           </View>
         </ScrollView>
 
-        <View className="px-5 pb-8 pt-4 bg-white border-t border-gray-100">
+        <View className="border-t border-gray-100 bg-white px-5 pb-8 pt-4">
           <TouchableOpacity
             onPress={handleApply}
-            className="bg-blue-600 rounded-2xl py-4 items-center"
+            className="items-center rounded-2xl bg-blue-600 py-4"
             style={{
               shadowColor: "#2563EB",
               shadowOffset: { width: 0, height: 4 },
@@ -267,7 +264,7 @@ export default function FilterModal({
               elevation: 4,
             }}
           >
-            <Text className="text-white font-bold text-base">
+            <Text className="font-bold text-base text-white">
               Apply Filters {activeCount > 0 ? `(${activeCount})` : ""}
             </Text>
           </TouchableOpacity>

@@ -9,7 +9,7 @@ export default function FeatureCard({ property }: { property: Property }) {
   const router = useRouter();
   return (
     <TouchableOpacity
-      className="w-72 mr-2 rounded-3xl overflow-hidden bg-white"
+      className="mr-2 w-72 overflow-hidden rounded-3xl bg-white"
       style={{
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 1 },
@@ -22,27 +22,27 @@ export default function FeatureCard({ property }: { property: Property }) {
     >
       <Image
         source={{ uri: property.images[0] }}
-        className="w-full h-44"
+        className="h-44 w-full"
         resizeMode="cover"
       />
-      <View className="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full">
-        <Text className="text-xs font-semibold text-blue-600 capitalize">
+      <View className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1">
+        <Text className="text-xs font-semibold capitalize text-blue-600">
           {property.type}
         </Text>
       </View>
 
       {property.is_sold && (
-        <View className="absolute top-3 right-3 bg-red-500 px-3 py-1 rounded-full">
+        <View className="absolute right-3 top-3 rounded-full bg-red-500 px-3 py-1">
           <Text className="text-xs font-semibold text-white">Sold</Text>
         </View>
       )}
 
       <View className="p-4">
-        <Text className="text-base font-bold text-gray-800 mb-1">
+        <Text className="mb-1 font-bold text-base text-gray-800">
           {property.title}
         </Text>
 
-        <View className="flex-row items-center gap-1 mb-3">
+        <View className="mb-3 flex-row items-center gap-1">
           <Ionicons name="location-outline" size={13} color="6B7280" />
           <Text className="text-xs text-gray-500" numberOfLines={1}>
             {property.address}, {property.city}
@@ -50,7 +50,7 @@ export default function FeatureCard({ property }: { property: Property }) {
         </View>
 
         <View className="flex-row items-center justify-between">
-          <Text className="text-blue-600 font-bold text-base">
+          <Text className="font-bold text-base text-blue-600">
             {formatPrice(property.price)}
           </Text>
 

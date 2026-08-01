@@ -22,7 +22,7 @@ export default function PropertyCard({
   );
   return (
     <TouchableOpacity
-      className="flex-row bg-white rounded-2xl mb-4 overflow-hidden"
+      className="mb-4 flex-row overflow-hidden rounded-2xl bg-white"
       style={{
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 1 },
@@ -35,13 +35,13 @@ export default function PropertyCard({
     >
       <Image
         source={{ uri: property.images[0] }}
-        className="w-28 h-28"
+        className="h-28 w-28"
         resizeMode="cover"
       />
 
-      <View className="flex-1 p-3 justify-between">
+      <View className="flex-1 justify-between p-3">
         <View>
-          <Text className="text-sm font-bold text-gray-800 mb-1">
+          <Text className="mb-1 font-bold text-sm text-gray-800">
             {property.title}
           </Text>
 
@@ -54,12 +54,12 @@ export default function PropertyCard({
         </View>
 
         <View className="flex-row items-center justify-between">
-          <Text className="text-xs text-blue-600 font-bold">
+          <Text className="font-bold text-xs text-blue-600">
             {formatPrice(property.price)}
           </Text>
 
           {property.is_sold && (
-            <View className="bg-red-50 px-2 py-0.5 rounded-full">
+            <View className="rounded-full bg-red-50 px-2 py-0.5">
               <Text className="text-xs font-semibold text-red-500">Sold</Text>
             </View>
           )}

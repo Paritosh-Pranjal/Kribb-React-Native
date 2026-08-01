@@ -108,14 +108,14 @@ export default function Search() {
 
   return (
     <SafeAreaView className="flex-1 bg-gray-50">
-      <View className="px-5 pt-4 pb-3">
-        <Text className="text-2xl font-bold text-gray-900 mb-4">
+      <View className="px-5 pb-3 pt-4">
+        <Text className="mb-4 font-bold text-2xl text-gray-900">
           Find Property
         </Text>
 
         <View className="flex-row items-center gap-3">
           <View
-            className="flex-1 flex-row items-center bg-white rounded-2xl px-4 gap-3"
+            className="flex-1 flex-row items-center gap-3 rounded-2xl bg-white px-4"
             style={{
               shadowColor: "#000",
               shadowOffset: { width: 0, height: 1 },
@@ -143,7 +143,7 @@ export default function Search() {
 
           <TouchableOpacity
             onPress={() => setShowFilters(true)}
-            className={`w-12 h-12 rounded-2xl items-center justify-center ${
+            className={`h-12 w-12 items-center justify-center rounded-2xl ${
               activeFilterCount > 0 ? "bg-blue-600" : "bg-white"
             }`}
             style={{
@@ -161,8 +161,8 @@ export default function Search() {
             />
 
             {activeFilterCount > 0 && (
-              <View className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full items-center justify-center">
-                <Text className="text-white text-[9px] font-bold">
+              <View className="absolute -right-1 -top-1 h-4 w-4 items-center justify-center rounded-full bg-red-500">
+                <Text className="font-bold text-[9px] text-white">
                   {activeFilterCount}
                 </Text>
               </View>
@@ -171,7 +171,7 @@ export default function Search() {
         </View>
         {/* Filter Chips  */}
         {activeFilterCount > 0 && (
-          <View className="flex-row gap-2 mt-3">
+          <View className="mt-3 flex-row gap-2">
             {type && <SearchChip type={type} onClick={() => setType(null)} />}
             {bedrooms && (
               <SearchChip
@@ -207,7 +207,7 @@ export default function Search() {
         contentContainerStyle={{ padding: 20, paddingBottom: 100 }}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={
-          <Text className="text-sm text-gray-400 mb-4">
+          <Text className="mb-4 text-sm text-gray-400">
             {loading ? "Searching..." : `${results.length} Properties found`}
           </Text>
         }

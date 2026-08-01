@@ -107,8 +107,7 @@ function toFormState(initial?: PropertyFormInitialValues): FormState {
     address: initial.address ?? "",
     city: initial.city ?? "",
     latitude: initial.latitude !== undefined ? String(initial.latitude) : "",
-    longitude:
-      initial.longitude !== undefined ? String(initial.longitude) : "",
+    longitude: initial.longitude !== undefined ? String(initial.longitude) : "",
     isFeatured: initial.isFeatured ?? false,
     images: initial.images ?? [],
     localImages: initial.images ?? [],
@@ -121,9 +120,7 @@ interface PropertyFormProps {
   successTitle?: string;
   successMessage: string;
   initialValues?: PropertyFormInitialValues;
-  onSubmit: (
-    values: PropertyFormValues,
-  ) => Promise<{ error?: unknown } | void>;
+  onSubmit: (values: PropertyFormValues) => Promise<{ error?: unknown } | void>;
   onSuccess: () => void;
   onBack?: () => void;
 }
@@ -140,9 +137,7 @@ export default function PropertyForm({
 }: PropertyFormProps) {
   const authSupabase = useSupabase();
 
-  const [form, setForm] = useState<FormState>(() =>
-    toFormState(initialValues),
-  );
+  const [form, setForm] = useState<FormState>(() => toFormState(initialValues));
 
   // Loading states
   const [submitting, setSubmitting] = useState(false);
@@ -319,7 +314,9 @@ export default function PropertyForm({
       return;
     }
 
-    Alert.alert(successTitle, successMessage, [{ text: "OK", onPress: onSuccess }]);
+    Alert.alert(successTitle, successMessage, [
+      { text: "OK", onPress: onSuccess },
+    ]);
   };
 
   return (
@@ -329,16 +326,16 @@ export default function PropertyForm({
         className="flex-1"
       >
         {/* Header  */}
-        <View className="flex-row items-center gap-3 px-5 pt-4 pb-3">
+        <View className="flex-row items-center gap-3 px-5 pb-3 pt-4">
           {onBack && (
             <TouchableOpacity
               onPress={onBack}
-              className="w-10 h-10 bg-white rounded-full items-center justify-center shadow-sm"
+              className="h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm"
             >
               <Ionicons name="arrow-back" size={20} color="#111827" />
             </TouchableOpacity>
           )}
-          <Text className="text-2xl text-gray-900 font-bold flex-1">
+          <Text className="flex-1 font-bold text-2xl text-gray-900">
             {headerTitle}
           </Text>
         </View>
@@ -351,7 +348,7 @@ export default function PropertyForm({
           <View className={sectionClass}>
             <Text className={labelClass}>
               Photos <Text className="text-red-500">*</Text>{" "}
-              <Text className="text-gray-400 font-normal">(up to 6)</Text>
+              <Text className="font-normal text-gray-400">(up to 6)</Text>
             </Text>
 
             <View className="flex-row flex-wrap gap-3">
@@ -359,19 +356,19 @@ export default function PropertyForm({
                 <View key={index} className="relative">
                   <Image
                     source={{ uri }}
-                    className="w-24 h-24 rounded-2xl"
+                    className="h-24 w-24 rounded-2xl"
                     resizeMode="cover"
                   />
                   {index === 0 && (
-                    <View className="absolute top-1 left-1 bg-blue-600 px-1.5 py-0.5 rounded-full">
-                      <Text className="text-white text-[9px] font-bold">
+                    <View className="absolute left-1 top-1 rounded-full bg-blue-600 px-1.5 py-0.5">
+                      <Text className="font-bold text-[9px] text-white">
                         COVER
                       </Text>
                     </View>
                   )}
                   <TouchableOpacity
                     onPress={() => handleRemoveImage(index)}
-                    className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full items-center justify-center"
+                    className="absolute -right-2 -top-2 h-5 w-5 items-center justify-center rounded-full bg-red-500"
                   >
                     <Ionicons name="close" size={11} color="white" />
                   </TouchableOpacity>
@@ -382,7 +379,7 @@ export default function PropertyForm({
                 <TouchableOpacity
                   onPress={handlePickImages}
                   disabled={uploadingImages}
-                  className="w-24 h-24 rounded-2xl bg-white border-2 border-dashed border-gray-300 items-center justify-center"
+                  className="h-24 w-24 items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-white"
                 >
                   {uploadingImages ? (
                     <ActivityIndicator size="small" color="#2563EB" />
@@ -393,7 +390,7 @@ export default function PropertyForm({
                         size={22}
                         color="#9CA3AF"
                       />
-                      <Text className="text-gray-400 text-xs mt-1">Add</Text>
+                      <Text className="mt-1 text-xs text-gray-400">Add</Text>
                     </>
                   )}
                 </TouchableOpacity>
@@ -443,7 +440,7 @@ export default function PropertyForm({
               onChangeText={(v) => updateForm({ price: v })}
               keyboardType="numeric"
             />
-            <Text className="text-xs text-gray-400 mt-1.5 ml-1">
+            <Text className="ml-1 mt-1.5 text-xs text-gray-400">
               Valid range: ₹1 – ₹{MAX_PRICE.toLocaleString("en-IN")}
             </Text>
           </View>
@@ -456,10 +453,10 @@ export default function PropertyForm({
                 <TouchableOpacity
                   key={t}
                   onPress={() => updateForm({ type: t })}
-                  className={`px-4 py-2 rounded-full border ${
+                  className={`rounded-full border px-4 py-2 ${
                     form.type === t
-                      ? "bg-blue-600 border-blue-600"
-                      : "bg-white border-gray-200"
+                      ? "border-blue-600 bg-blue-600"
+                      : "border-gray-200 bg-white"
                   }`}
                 >
                   <Text
@@ -475,7 +472,7 @@ export default function PropertyForm({
           </View>
 
           {/* Bedrooms / Bathrooms */}
-          <View className="flex-row gap-4 mb-5">
+          <View className="mb-5 flex-row gap-4">
             <Counter
               label="Bedrooms"
               value={form.bedrooms}
@@ -530,21 +527,21 @@ export default function PropertyForm({
           </View>
           {/* Coordinates */}
           <View className={sectionClass}>
-            <View className="flex-row items-center justify-between mb-1.5">
+            <View className="mb-1.5 flex-row items-center justify-between">
               <Text className={labelClass}>
                 Coordinates <Text className="text-red-500">*</Text>
               </Text>
               <TouchableOpacity
                 onPress={handleDetectLocation}
                 disabled={detectingLocation}
-                className="flex-row items-center gap-1 bg-blue-50 px-3 py-1.5 rounded-full"
+                className="flex-row items-center gap-1 rounded-full bg-blue-50 px-3 py-1.5"
               >
                 {detectingLocation ? (
                   <ActivityIndicator size="small" color="#2563EB" />
                 ) : (
                   <Ionicons name="locate-outline" size={13} color="#2563EB" />
                 )}
-                <Text className="text-blue-600 text-xs font-semibold">
+                <Text className="text-xs font-semibold text-blue-600">
                   {detectingLocation ? "Detecting..." : "Detect Location"}
                 </Text>
               </TouchableOpacity>
@@ -575,7 +572,7 @@ export default function PropertyForm({
           </View>
 
           {/* Toggles */}
-          <View className="gap-3 mb-5">
+          <View className="mb-5 gap-3">
             <Toggle
               label="Featured Property"
               description="Show this in the Featured section on home"
@@ -588,7 +585,7 @@ export default function PropertyForm({
           <TouchableOpacity
             onPress={handleSubmit}
             disabled={submitting || uploadingImages}
-            className="bg-blue-600 rounded-2xl py-4 items-center"
+            className="items-center rounded-2xl bg-blue-600 py-4"
             style={{
               shadowColor: "#2563EB",
               shadowOffset: { width: 0, height: 4 },
@@ -601,7 +598,7 @@ export default function PropertyForm({
             {submitting ? (
               <ActivityIndicator color="white" />
             ) : (
-              <Text className="text-white font-bold text-base">
+              <Text className="font-bold text-base text-white">
                 {submitLabel}
               </Text>
             )}
@@ -623,19 +620,19 @@ const Counter = ({
 }) => (
   <View className="flex-1">
     <Text className={labelClass}>{label}</Text>
-    <View className="flex-row items-center bg-white border border-gray-200 rounded-2xl overflow-hidden">
+    <View className="flex-row items-center overflow-hidden rounded-2xl border border-gray-200 bg-white">
       <TouchableOpacity
         onPress={() => onChange(Math.max(1, value - 1))}
-        className="w-11 h-11 items-center justify-center"
+        className="h-11 w-11 items-center justify-center"
       >
         <Ionicons name="remove" size={18} color="#374151" />
       </TouchableOpacity>
-      <Text className="flex-1 text-center text-gray-800 font-bold text-base">
+      <Text className="flex-1 text-center font-bold text-base text-gray-800">
         {value}
       </Text>
       <TouchableOpacity
         onPress={() => onChange(value + 1)}
-        className="w-11 h-11 items-center justify-center"
+        className="h-11 w-11 items-center justify-center"
       >
         <Ionicons name="add" size={18} color="#374151" />
       </TouchableOpacity>
@@ -656,23 +653,23 @@ const Toggle = ({
 }) => (
   <TouchableOpacity
     onPress={() => onChange(!value)}
-    className={`flex-row items-center justify-between p-4 rounded-2xl border ${
-      value ? "bg-blue-50 border-blue-200" : "bg-white border-gray-200"
+    className={`flex-row items-center justify-between rounded-2xl border p-4 ${
+      value ? "border-blue-200 bg-blue-50" : "border-gray-200 bg-white"
     }`}
   >
-    <View className="flex-1 mr-3">
+    <View className="mr-3 flex-1">
       <Text
         className={`font-semibold ${value ? "text-blue-700" : "text-gray-700"}`}
       >
         {label}
       </Text>
       {description && (
-        <Text className="text-xs text-gray-400 mt-0.5">{description}</Text>
+        <Text className="mt-0.5 text-xs text-gray-400">{description}</Text>
       )}
     </View>
     <View
-      className={`w-6 h-6 rounded-full border-2 items-center justify-center ${
-        value ? "bg-blue-600 border-blue-600" : "border-gray-300"
+      className={`h-6 w-6 items-center justify-center rounded-full border-2 ${
+        value ? "border-blue-600 bg-blue-600" : "border-gray-300"
       }`}
     >
       {value && <Ionicons name="checkmark" size={14} color="white" />}

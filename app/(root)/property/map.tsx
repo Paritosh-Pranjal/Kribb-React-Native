@@ -25,22 +25,22 @@ export default function MapScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <View className="flex-row items-start justify-between px-4 py-2 border-b border-gray-100">
+      <View className="flex-row items-start justify-between border-b border-gray-100 px-4 py-2">
         <TouchableOpacity
           onPress={() => router.back()}
-          className="w-10 h-10 bg-gray-100 rounded-full items-center justify-center shadow-md"
+          className="h-10 w-10 items-center justify-center rounded-full bg-gray-100 shadow-md"
         >
           <Ionicons name="arrow-back" size={20} color="#111827" />
         </TouchableOpacity>
-        <View className="flex-1 mx-3">
-          <Text className="text-lg text-gray-900 font-bold">{title}</Text>
-          <Text className="text-gray-400 text-xs" numberOfLines={1}>
+        <View className="mx-3 flex-1">
+          <Text className="font-bold text-lg text-gray-900">{title}</Text>
+          <Text className="text-xs text-gray-400" numberOfLines={1}>
             {address}
           </Text>
         </View>
 
         <TouchableOpacity
-          className="flex-row items-center gap-1 bg-gray-100 rounded-full px-3 py-2 shadow-md"
+          className="flex-row items-center gap-1 rounded-full bg-gray-100 px-3 py-2 shadow-md"
           onPress={() => {
             Linking.openURL(`https://www.google.com/maps?q=${lat},${lng}`);
           }}

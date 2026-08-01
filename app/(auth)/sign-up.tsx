@@ -85,18 +85,18 @@ export default function SignUp() {
           <View className="flex-1 justify-center px-6 py-12">
             <Image
               source={require("../../assets/images/kribb.png")}
-              className="w-16 h-16 mb-6 self-center"
+              className="mb-6 h-16 w-16 self-center"
               resizeMode="contain"
             />
-            <Text className="text-2xl font-bold text-gray-900 mb-2 text-center">
+            <Text className="mb-2 text-center font-bold text-2xl text-gray-900">
               Verify Account
             </Text>
-            <Text className="text-gray-500 mb-10 text-center leading-5">
+            <Text className="mb-10 text-center leading-5 text-gray-500">
               We have sent a code to{"\n"}
-              <Text className="text-primary font-medium">{email}</Text>
+              <Text className="font-medium text-primary">{email}</Text>
             </Text>
             <TextInput
-              className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3.5 mb-3 text-gray-900 text-center tracking-widest"
+              className="mb-3 w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-center tracking-widest text-gray-900"
               placeholder="Enter verification code"
               placeholderTextColor="#9CA3AF"
               keyboardType="number-pad"
@@ -104,7 +104,7 @@ export default function SignUp() {
               onChangeText={setCode}
             />
             {errors.fields.code && (
-              <Text className="text-red-500 text-sm mb-3">
+              <Text className="mb-3 text-sm text-red-500">
                 {errors.fields.code.message}
               </Text>
             )}
@@ -112,12 +112,12 @@ export default function SignUp() {
             <TouchableOpacity
               onPress={onVerifyPress}
               disabled={isLoading}
-              className="w-full bg-primary py-4 rounded-2xl items-center mb-4 mt-2 shadow-sm active:opacity-90"
+              className="mb-4 mt-2 w-full items-center rounded-2xl bg-primary py-4 shadow-sm active:opacity-90"
             >
               {isLoading ? (
                 <ActivityIndicator color="white" />
               ) : (
-                <Text className="text-white font-bold text-base">
+                <Text className="font-bold text-base text-white">
                   Verify Otp
                 </Text>
               )}
@@ -126,9 +126,9 @@ export default function SignUp() {
             <TouchableOpacity
               onPress={() => signUp.verifications.sendEmailCode()}
               disabled={isLoading}
-              className="py-2 self-center"
+              className="self-center py-2"
             >
-              <Text className="text-primary font-medium">
+              <Text className="font-medium text-primary">
                 I need a new code
               </Text>
             </TouchableOpacity>
@@ -150,18 +150,18 @@ export default function SignUp() {
         <View className="flex-1 justify-center px-6 py-12">
           <Image
             source={require("../../assets/images/kribb.png")}
-            className="w-16 h-16 mb-6 self-center"
+            className="mb-6 h-16 w-16 self-center"
             resizeMode="contain"
           />
-          <Text className="text-3xl font-bold text-gray-900 mb-2 text-center">
+          <Text className="mb-2 text-center font-bold text-3xl text-gray-900">
             Create Account
           </Text>
-          <Text className="text-gray-500 mb-10 text-center">
+          <Text className="mb-10 text-center text-gray-500">
             Find your dream home today.
           </Text>
-          <View className="flex-row gap-3 mb-3">
+          <View className="mb-3 flex-row gap-3">
             <TextInput
-              className="flex-1 bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3.5 text-gray-900"
+              className="flex-1 rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-gray-900"
               placeholder="First Name"
               placeholderTextColor="#9CA3AF"
               autoCapitalize="words"
@@ -169,7 +169,7 @@ export default function SignUp() {
               onChangeText={setFirstName}
             />
             <TextInput
-              className="flex-1 bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3.5 text-gray-900"
+              className="flex-1 rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-gray-900"
               placeholder="Last Name"
               placeholderTextColor="#9CA3AF"
               autoCapitalize="words"
@@ -178,7 +178,7 @@ export default function SignUp() {
             />
           </View>
           <TextInput
-            className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3.5 mb-3 text-gray-900"
+            className="mb-3 w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-gray-900"
             placeholder="Email Address"
             placeholderTextColor="#9CA3AF"
             keyboardType="email-address"
@@ -187,11 +187,11 @@ export default function SignUp() {
             onChangeText={setEmail}
           />
           {errors.fields.emailAddress && (
-            <Text className="text-red-500 text-sm mb-3">
+            <Text className="mb-3 text-sm text-red-500">
               {errors.fields.emailAddress.message}
             </Text>
           )}
-          <View className="w-full flex-row items-center bg-gray-50 border border-gray-200 rounded-2xl px-4 mb-3">
+          <View className="mb-3 w-full flex-row items-center rounded-2xl border border-gray-200 bg-gray-50 px-4">
             <TextInput
               className="flex-1 py-3.5 text-gray-900"
               placeholder="Password"
@@ -210,7 +210,7 @@ export default function SignUp() {
             </Pressable>
           </View>
           {errors.fields.password && (
-            <Text className="text-red-500 text-sm mb-3">
+            <Text className="mb-3 text-sm text-red-500">
               {errors.fields.password.message}
             </Text>
           )}
@@ -218,19 +218,19 @@ export default function SignUp() {
           <TouchableOpacity
             onPress={onSignUpPress}
             disabled={isLoading}
-            className="w-full bg-primary py-4 rounded-2xl items-center mb-6 mt-3 shadow-sm active:opacity-90"
+            className="mb-6 mt-3 w-full items-center rounded-2xl bg-primary py-4 shadow-sm active:opacity-90"
           >
             {isLoading ? (
               <ActivityIndicator color="white" />
             ) : (
-              <Text className="text-white font-bold text-base">Sign Up</Text>
+              <Text className="font-bold text-base text-white">Sign Up</Text>
             )}
           </TouchableOpacity>
 
           <View className="flex-row justify-center">
             <Text className="text-gray-500">Already have an account?</Text>
             <Link href="/sign-in">
-              <Text className="text-primary font-bold"> Sign in</Text>
+              <Text className="font-bold text-primary"> Sign in</Text>
             </Link>
           </View>
 

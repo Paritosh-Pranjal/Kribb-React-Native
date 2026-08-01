@@ -79,16 +79,16 @@ export default function PropertyDetails() {
 
   if (!property) {
     return (
-      <SafeAreaView className="flex-1 items-center justify-center bg-white gap-4">
+      <SafeAreaView className="flex-1 items-center justify-center gap-4 bg-white">
         <Text className="text-gray-500">
           Property not found. Try again later.
         </Text>
         <TouchableOpacity
           onPress={() => router.back()}
-          className="flex-row items-center gap-2 bg-gray-100 px-4 py-2 rounded-full"
+          className="flex-row items-center gap-2 rounded-full bg-gray-100 px-4 py-2"
         >
           <Ionicons name="arrow-back" size={16} color="#111827" />
-          <Text className="text-gray-900 font-semibold">Go Back</Text>
+          <Text className="font-semibold text-gray-900">Go Back</Text>
         </TouchableOpacity>
       </SafeAreaView>
     );
@@ -186,18 +186,18 @@ export default function PropertyDetails() {
             />
           </View>
           {/* Image Count Badge  */}
-          <View className="absolute bottom-3 right-4 bg-black/50 px-3 py-1 rounded-full">
-            <Text className="text-white text-sm">
+          <View className="absolute bottom-3 right-4 rounded-full bg-black/50 px-3 py-1">
+            <Text className="text-sm text-white">
               {activeIndex + 1} / {property.images.length}
             </Text>
           </View>
         </View>
 
-        <SafeAreaView className="absolute top-0 left-0 w-full">
+        <SafeAreaView className="absolute left-0 top-0 w-full">
           <View className="flex-row items-center justify-between px-4 pt-2">
             <TouchableOpacity
               onPress={() => router.back()}
-              className="w-10 h-10 bg-white rounded-full items-center justify-center shadow-md"
+              className="h-10 w-10 items-center justify-center rounded-full bg-white shadow-md"
             >
               <Ionicons name="arrow-back" size={24} color="#111827" />
             </TouchableOpacity>
@@ -206,7 +206,7 @@ export default function PropertyDetails() {
               {isAdmin && (
                 <TouchableOpacity
                   onPress={() => router.push(`/(root)/property/edit/${id}`)}
-                  className="w-10 h-10 bg-white rounded-full items-center justify-center shadow-md"
+                  className="h-10 w-10 items-center justify-center rounded-full bg-white shadow-md"
                 >
                   <Ionicons name="create-outline" size={19} color="#111827" />
                 </TouchableOpacity>
@@ -215,7 +215,7 @@ export default function PropertyDetails() {
               <TouchableOpacity
                 onPress={toggleSave}
                 disabled={saveLoading}
-                className="w-10 h-10 bg-white rounded-full items-center justify-center shadow-md"
+                className="h-10 w-10 items-center justify-center rounded-full bg-white shadow-md"
               >
                 <Ionicons
                   name={isSaved ? "heart" : "heart-outline"}
@@ -227,15 +227,15 @@ export default function PropertyDetails() {
           </View>
         </SafeAreaView>
 
-        <View className="flex gap-2 px-5 pt-5 pb-8">
-          <View className="self-start px-3 py-1 bg-blue-50 rounded-full">
-            <Text className="capitalize text-blue-600 text-xs font-semibold">
+        <View className="flex gap-2 px-5 pb-8 pt-5">
+          <View className="self-start rounded-full bg-blue-50 px-3 py-1">
+            <Text className="text-xs font-semibold capitalize text-blue-600">
               {property.type}
             </Text>
           </View>
 
-          <Text className="text-2xl font-bold">{property.title}</Text>
-          <Text className="text-xl font-bold text-blue-600">
+          <Text className="font-bold text-2xl">{property.title}</Text>
+          <Text className="font-bold text-xl text-blue-600">
             {formatPrice(property.price)}
           </Text>
 
@@ -258,33 +258,33 @@ export default function PropertyDetails() {
             <SpectItem icon="home-outline" label="Type" value={property.type} />
           </View>
 
-          <Text className="text-base font-bold text-gray-900 mb-2">
+          <Text className="mb-2 font-bold text-base text-gray-900">
             Description
           </Text>
-          <Text className="text-gray-500 text-sm leading-6 mb-1">
+          <Text className="mb-1 text-sm leading-6 text-gray-500">
             {displayDesc}
           </Text>
           {isLongDesc && (
             <TouchableOpacity onPress={() => setExpanded(!expanded)}>
-              <Text className="text-blue-500 text-sm font-semibold">
+              <Text className="text-sm font-semibold text-blue-500">
                 {expanded ? "Show Less" : "Read More"}
               </Text>
             </TouchableOpacity>
           )}
 
-          <Text className="text-base font-bold text-gray-900 mb-2">
+          <Text className="mb-2 font-bold text-base text-gray-900">
             Location
           </Text>
-          <View className="flex-row items-center gap-2 mb-4">
+          <View className="mb-4 flex-row items-center gap-2">
             <Ionicons name="location-outline" size={16} color="#6B7280" />
-            <Text className="text-gray-500 text-sm flex-1">
+            <Text className="flex-1 text-sm text-gray-500">
               {property.address}, {property.city}
             </Text>
           </View>
 
           <TouchableOpacity
             activeOpacity={0.9}
-            className="rounded-2xl overflow-hidden mb-6"
+            className="mb-6 overflow-hidden rounded-2xl"
             style={{ height: 200 }}
             onPress={() =>
               router.push({
@@ -304,18 +304,18 @@ export default function PropertyDetails() {
               scrollEnabled={false}
               pointerEvents="none"
             />
-            <View className="flex flex-row items-center absolute bottom-3 right-3 bg-white/90 px-3 py-1 rounded-full gap-1">
+            <View className="absolute bottom-3 right-3 flex flex-row items-center gap-1 rounded-full bg-white/90 px-3 py-1">
               <Ionicons name="expand-outline" size={12} color="#374151" />
               <Text>Tap to expand</Text>
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity
-            className="bg-green-500 flex flex-row items-center justify-center py-4 rounded-full gap-2 mb-3"
+            className="mb-3 flex flex-row items-center justify-center gap-2 rounded-full bg-green-500 py-4"
             onPress={handleContact}
           >
             <Ionicons name="logo-whatsapp" size={20} color="white" />
-            <Text className="font-semibold text-white text-base">
+            <Text className="text-base font-semibold text-white">
               Contact Agent
             </Text>
           </TouchableOpacity>
@@ -323,7 +323,7 @@ export default function PropertyDetails() {
           {isAdmin && (
             <View className="flex-row justify-center gap-3">
               <TouchableOpacity
-                className="flex-1 flex-row items-center justify-center gap-1.5 bg-amber-50 border border-amber-200 py-4 rounded-2xl"
+                className="flex-1 flex-row items-center justify-center gap-1.5 rounded-2xl border border-amber-200 bg-amber-50 py-4"
                 onPress={handleToggleSold}
               >
                 <Ionicons
@@ -336,7 +336,7 @@ export default function PropertyDetails() {
                   color="#D97706"
                 />
                 <Text
-                  className="text-amber-600 font-semibold"
+                  className="font-semibold text-amber-600"
                   numberOfLines={1}
                 >
                   {property.is_sold ? "Mark Available" : "Mark Sold"}
@@ -344,11 +344,11 @@ export default function PropertyDetails() {
               </TouchableOpacity>
 
               <TouchableOpacity
-                className="flex-1 flex-row items-center justify-center gap-1.5 bg-red-50 border border-red-200 py-4 rounded-2xl"
+                className="flex-1 flex-row items-center justify-center gap-1.5 rounded-2xl border border-red-200 bg-red-50 py-4"
                 onPress={handleDelete}
               >
                 <Ionicons name="trash-outline" size={18} color="#EF4444" />
-                <Text className="text-red-600 font-semibold">Delete</Text>
+                <Text className="font-semibold text-red-600">Delete</Text>
               </TouchableOpacity>
             </View>
           )}
@@ -375,10 +375,10 @@ function SpectItem({
   value: string;
 }) {
   return (
-    <View className="flex gap-1 items-center">
+    <View className="flex items-center gap-1">
       <Ionicons name={icon} size={20} color="#2563EB" />
-      <Text className="text-gray-900 font-bold text-sm">{value}</Text>
-      <Text className="text-gray-400 text-xs">{label}</Text>
+      <Text className="font-bold text-sm text-gray-900">{value}</Text>
+      <Text className="text-xs text-gray-400">{label}</Text>
     </View>
   );
 }
